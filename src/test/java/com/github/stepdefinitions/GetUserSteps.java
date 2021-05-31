@@ -3,16 +3,13 @@ package com.github.stepdefinitions;
 import static net.serenitybdd.rest.SerenityRest.lastResponse;
 
 import com.github.commontasks.CommonQuestions;
-
 import com.github.commontasks.CommonRequestSpec;
 import com.github.users.GithubUserActions;
 import com.github.users.GithubUserQuestions;
-import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import io.restassured.specification.RequestSpecification;
-import net.serenitybdd.rest.SerenityRest;
 import net.thucydides.core.annotations.Steps;
 
 

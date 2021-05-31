@@ -1,10 +1,7 @@
 package com.github.search;
 
 import com.github.commontasks.CommonRequestSpec;
-import io.restassured.builder.RequestSpecBuilder;
 import io.restassured.response.Response;
-import io.restassured.specification.RequestSpecification;
-import java.util.Map;
 import net.serenitybdd.rest.SerenityRest;
 import net.thucydides.core.annotations.Step;
 

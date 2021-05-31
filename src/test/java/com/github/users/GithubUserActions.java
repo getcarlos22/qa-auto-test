@@ -1,7 +1,6 @@
 package com.github.users;
 
 import com.github.commontasks.CommonRequestSpec;
-import io.restassured.response.ExtractableResponse;
 import io.restassured.response.Response;
 import io.restassured.specification.RequestSpecification;
 import net.serenitybdd.rest.SerenityRest;

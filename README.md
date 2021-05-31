@@ -7,6 +7,8 @@ This is a Rest API test solution for few Github endpoints available in https://a
 The published APIs represent a github application where user can get his information , 
 search through all public code repositories and post a comment to an existing user gists.
 
+This repo runs these api tests for every code commit and you can see the latest test jobs status [test job status](https://gitlab.com/vamsi-darbhamulla/restassured-serenitybdd-junit-cucumber/-/jobs)
+
 ## Dependencies Versions <br>
 Tests are written using a combination of Java, SerenityBDD, RestAssured, Cucumber, Junit & Maven. <br>
 Java - JDK11 <br>
@@ -31,6 +33,8 @@ Junit - 4.12 <br>
 - Configurations for different environments are set in the `test/resources/serenity.conf` file.
 - Added a debug mode param for each test environment to provide more context/information on console while building tests or running them using IDE (intellij).
 - Default and Dev environments are enabled with isDebug=true in serenty.conf however staging environment is disabled for debugging.
+- Tests are run on GitLab CI using a docker image  (maven:3.8.1-jdk-11) on shared runner (gitlab-org-docker)
+- Tests can run on local docker setup without any other required dependencies by running the script run_tests.sh.
 
 ### The project directory structure
 
@@ -84,6 +88,7 @@ mvn -Djetty.port=7777 jetty:run ## then open http://localhost:7777
 Additional command line parameters can be passed for switching the application environment.
 ```bash
 mvn clean verify -Denvironment=dev
+mvn clean verify -Denvironment=staging
 ```
 
 To run specific checks use cucumber tags feature 
@@ -110,4 +115,9 @@ mvn clean verify -Dcucumber.filter.tags="@schema-checks" # 2 tests will be execu
 
 ## to run only user and search code features checks 
 mvn clean verify -Dcucumber.filter.tags="@user-checks or @search-code-checks" # 7 tests will be executed
+```
+
+To run the tests on local docker 
+```bash
+source run_tests.sh
 ```

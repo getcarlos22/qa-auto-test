@@ -1,19 +1,11 @@
 image: maven:3.8.1-jdk-11
 
 stages:
-  - build
   - test
-
-build:
-  stage: build
-  script:
-    - mvn test-compile compile
-  tags:
-    - gitlab-org-docker
 
 test:
   stage: test
   script:
-    - mvn verify
+    - mvn verify -Dcucumber.filter.tags="@functional-checks"
   tags:
     - gitlab-org-docker
