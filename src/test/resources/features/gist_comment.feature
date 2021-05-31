@@ -13,7 +13,7 @@ Feature: Post Gist Comment endpoint
   @schema-checks @gist-comment-schema-check
   Scenario: Github gist post comment response schema validation
 
-  Github user GET requests response should be evaluated against the specified response json schema
+  Github gist comments POST requests response should be evaluated against the specified response json schema
   [POST endpoint](https://api.github.com/gists/{gistid}/comment).
 
     Given Funnyguy21 can authenticate with his github account personalized token
@@ -23,8 +23,8 @@ Feature: Post Gist Comment endpoint
   @smoke-checks @happy-path-checks @gist-comment-happy-path-checks
   Scenario Outline: Github gist post comment response validation
 
-  Github user post a gist comment response properties and values should be evaluated
-  using the [GET endpoint](https://api.github.com/gists/{gistid}/comment).
+  Github gist comments POST requests response should be evaluated
+  using the [POST endpoint](https://api.github.com/gists/{gistid}/comment).
 
     Given Funnyguy21 can authenticate with his github account personalized token
     When Funnyguy21 posts a gist comment <message> to <gist-id> using api
@@ -37,8 +37,8 @@ Feature: Post Gist Comment endpoint
   @negative-checks @gist-comment-negative-checks
   Scenario: Github gist comment 401 authorization error validation
 
-  Github user GET requests error response should be returned when user not provided authentication token
-  [GET endpoint](https://api.github.com/gists/{gistid}/comment).
+  Github gist comments POST requests error response should be returned when user not provided authentication token
+  [POST endpoint](https://api.github.com/gists/{gistid}/comment).
 
     Given Eran do not have an authentication token
     When Eran requests github user endpoint
@@ -49,8 +49,8 @@ Feature: Post Gist Comment endpoint
   @negative-checks @gist-comment-negative-checks
   Scenario Outline: Github gist not available 404 error validation
 
-  Github user GET requests error response should be returned when user not provided authentication token
-  [GET endpoint](https://api.github.com/gists/{gistid}/comment).
+  Github gist comments POST requests  error response should be returned when user not provided authentication token
+  [POST endpoint](https://api.github.com/gists/{gistid}/comment).
 
     Given Funnyguy21 can authenticate with his github account personalized token
     When Funnyguy21 posts a gist comment <message> to <gist-id> using api

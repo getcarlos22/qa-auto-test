@@ -5,20 +5,20 @@ import org.jasypt.encryption.pbe.StandardPBEStringEncryptor;
 
 class PropertyDecrypter {
 
-    private final StandardPBEStringEncryptor Decrypter;
+    private final StandardPBEStringEncryptor decrypter;
 
     PropertyDecrypter(String passwordDecrypter) {
-        this.Decrypter = new StandardPBEStringEncryptor();
+        this.decrypter = new StandardPBEStringEncryptor();
         String password = StringUtils.isBlank(passwordDecrypter)
             // properties are expected to encrypt with default password
             // if no password provided in configuration or properties
             ? Decrypt.PASSWORD.getValue()
             : passwordDecrypter;
-        this.Decrypter.setPassword(password);
+        this.decrypter.setPassword(password);
     }
 
     String decrypt(String encryptedProp) {
-        return Decrypter.decrypt(encryptedProp);
+        return decrypter.decrypt(encryptedProp);
     }
 
     /*
