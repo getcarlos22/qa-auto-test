@@ -1,5 +1,5 @@
 # Java-Serenity2-RestAssured4-Cucumber6-JUnit4-Maven Github API Automation Solution
-
+[![pipeline status](https://gitlab.com/vamsi-darbhamulla/restassured-serenitybdd-junit-cucumber/badges/master/pipeline.svg)](https://gitlab.com/vamsi-darbhamulla/restassured-serenitybdd-junit-cucumber/-/commits/master)
 
 ## Introduction
 
