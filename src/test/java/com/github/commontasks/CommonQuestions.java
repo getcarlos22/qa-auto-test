@@ -1,4 +1,4 @@
-package com.github.tasks;
+package com.github.commontasks;
 
 import static io.restassured.module.jsv.JsonSchemaValidator.matchesJsonSchemaInClasspath;
 import static org.assertj.core.api.Assertions.assertThat;
@@ -6,12 +6,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 import io.restassured.response.Response;
 import net.thucydides.core.annotations.Step;
 
-public class Question {
-  /**
-   * Get Request Specification for github api endpoints
-   *
-   * @return RequestSpecification
-   */
+public class CommonQuestions {
 
   @Step("Verify that API response is {0}")
   public void responseCodeIs(int responseCode, Response lastResponse) {

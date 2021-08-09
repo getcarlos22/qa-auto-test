@@ -1,6 +1,6 @@
-package com.github.utils;
+package com.github.commonutilities;
 
-import static com.github.utils.function.Memoize.memoizeSuppliers;
+import static com.github.commonutilities.functional.Memoize.memoizeSupplier;
 
 import java.util.function.Supplier;
 import net.serenitybdd.core.environment.EnvironmentSpecificConfiguration;
@@ -10,8 +10,8 @@ import org.apache.commons.lang3.StringUtils;
 
 public class TestEnv {
 
-    private static final Supplier<EnvironmentVariables> VARS = memoizeSuppliers(TestEnv::allVars);
-    private static final Supplier<PropertyDecrypter> DECRYPTER = memoizeSuppliers(TestEnv::encryptor);
+    private static final Supplier<EnvironmentVariables> VARS = memoizeSupplier(TestEnv::allVars);
+    private static final Supplier<PropertyDecrypter> DECRYPTER = memoizeSupplier(TestEnv::encryptor);
 
     public static String getProp(String prop) {
         EnvironmentSpecificConfiguration config = EnvironmentSpecificConfiguration.from(VARS.get());
@@ -19,8 +19,8 @@ public class TestEnv {
 
         // if property is Encrypted return decrypted value
         if(StringUtils.isNotBlank(propertyValue) && propertyValue.startsWith("ENC(")) {
-           String encryptedProp = propertyValue.substring(4, propertyValue.length()-1);
-           return DECRYPTER.get().decrypt(encryptedProp);
+            String encryptedProp = propertyValue.substring(4, propertyValue.length()-1);
+            return DECRYPTER.get().decrypt(encryptedProp);
         }
 
         return propertyValue;
@@ -28,7 +28,7 @@ public class TestEnv {
 
     private static PropertyDecrypter encryptor() {
         String encryptorPassword = EnvironmentSpecificConfiguration.from(VARS.get())
-            .getPropertyValue("passwordEncryptor");
+                .getPropertyValue("passwordEncryptor");
         return new PropertyDecrypter(encryptorPassword);
     }
 

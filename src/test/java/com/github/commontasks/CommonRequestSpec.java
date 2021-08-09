@@ -1,14 +1,18 @@
-package com.github.tasks;
+package com.github.commontasks;
 
-import com.github.utils.TestEnv;
+import com.github.commonutilities.TestEnv;
 import io.restassured.builder.RequestSpecBuilder;
 import io.restassured.filter.log.ErrorLoggingFilter;
 import io.restassured.filter.log.RequestLoggingFilter;
 import io.restassured.filter.log.ResponseLoggingFilter;
 import io.restassured.specification.RequestSpecification;
 
-public class RequestSpec {
-
+public class CommonRequestSpec {
+  /**
+   * Get Request Specification for github api endpoints
+   *
+   * @return RequestSpecification
+   */
 
   public static RequestSpecification githubReqSpec() {
     return githubReqSpecBuilder().build();
@@ -24,7 +28,7 @@ public class RequestSpec {
     String authToken = TestEnv.getProp("authToken");
 
     return specBuilder.addHeader(
-        "Authorization", "Basic " + authToken
+            "Authorization", "Basic " + authToken
     ).build();
   }
 
@@ -36,8 +40,8 @@ public class RequestSpec {
     final String baseUrl = TestEnv.getProp("baseUrl");
 
     RequestSpecBuilder specBuilder = new RequestSpecBuilder()
-        .setBaseUri(baseUrl)
-        .setContentType("application/json");
+            .setBaseUri(baseUrl)
+            .setContentType("application/json");
 
     final String isDebug = TestEnv.getProp("isDebug");
 
@@ -47,8 +51,8 @@ public class RequestSpec {
 
     if(isDebug.equalsIgnoreCase("true")) {
       specBuilder.addFilter(new RequestLoggingFilter())
-          .addFilter(new ResponseLoggingFilter())
-          .addFilter(new ErrorLoggingFilter());
+              .addFilter(new ResponseLoggingFilter())
+              .addFilter(new ErrorLoggingFilter());
     }
 
     return specBuilder;

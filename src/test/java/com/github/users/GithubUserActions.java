@@ -1,6 +1,6 @@
-package com.github.user;
+package com.github.users;
 
-import com.github.tasks.RequestSpec;
+import com.github.commontasks.CommonRequestSpec;
 import io.restassured.response.Response;
 import io.restassured.specification.RequestSpecification;
 import net.serenitybdd.rest.SerenityRest;
@@ -9,11 +9,10 @@ import net.thucydides.core.annotations.Step;
 public class GithubUserActions {
 
   private static final String USER_ENDPOINT = "/user";
-  //private static final String USER_ENDPOINT
 
   @Step("Get details for user {0}")
   public Response getUserDetails(String username) {
-    return userResponse(RequestSpec.githubAuthReqSpec());
+    return userResponse(CommonRequestSpec.githubAuthReqSpec());
   }
 
   @Step("Get details for user {0} with authspec {1}")
@@ -23,7 +22,7 @@ public class GithubUserActions {
 
   private Response userResponse(RequestSpecification authSpec) {
     return SerenityRest.given().spec(authSpec)
-        .basePath(USER_ENDPOINT)
-        .get().then().extract().response();
+            .basePath(USER_ENDPOINT)
+            .get().then().extract().response();
   }
 }

@@ -1,10 +1,11 @@
-package com.github.stepdefinition;
+package com.github.stepdefinitions;
 
 import static net.serenitybdd.rest.SerenityRest.lastResponse;
 
-import com.github.tasks.Question;
-import com.github.tasks.RequestSpec;
-import com.github.user.GithubUserActions;
+import com.github.commontasks.CommonQuestions;
+import com.github.commontasks.CommonRequestSpec;
+import com.github.users.GithubUserActions;
+import com.github.users.GithubUserQuestions;
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
@@ -12,10 +13,7 @@ import io.cucumber.java.en.When;
 import io.restassured.specification.RequestSpecification;
 import net.thucydides.core.annotations.Steps;
 
-
-import com.github.user.GithubUserQuestions;
-
-public class CommonStep {
+public class CommonSteps {
 
     private RequestSpecification requestSpecification;
 
@@ -23,11 +21,11 @@ public class CommonStep {
     GithubUserActions githubUserActions;
 
     @Steps
-    Question question;
+    CommonQuestions commonQuestions;
 
     @Given("{} can authenticate with his github account personalized token")
     public void actor_can_authenticated_With_github_personalized_token(String actor) {
-        requestSpecification = RequestSpec.githubAuthReqSpec();
+        requestSpecification = CommonRequestSpec.githubAuthReqSpec();
     }
 
     @When("{} requests user endpoint")
@@ -37,16 +35,16 @@ public class CommonStep {
 
     @And("the schema should match with the specification defined in {}")
     public void the_schema_should_match_with_the_specification(String spec) {
-        question.verifyResponseSchema(lastResponse(), spec);
+        commonQuestions.verifyResponseSchema(lastResponse(), spec);
     }
 
     @Then("(s)he should receive an error status {int} {}")
     public void user_should_receive_error_status(int httpStatusCode, String errorStatusMessage) {
-        question.responseCodeIs(httpStatusCode, lastResponse());
+        commonQuestions.responseCodeIs(httpStatusCode, lastResponse());
     }
 
     @And("(s)he receives an error json with message {}")
     public void user_should_receive_error_message(String message) {
-        question.responseShouldHaveErrorMessage(lastResponse(), message);
+        commonQuestions.responseShouldHaveErrorMessage(lastResponse(), message);
     }
 }

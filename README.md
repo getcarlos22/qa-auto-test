@@ -37,5 +37,5 @@ To run specific checks use cucumber tags feature
 mvn clean verify -Dcucumber.filter.tags="@End2End" # 9 tests will be executed
 
 ## to run individual feature based scenarios
-mvn clean verify -Dcucumber.filter.tags="@Id=1.1" # all user function scenarios  - 3 tests will be executed
+mvn clean verify -Dcucumber.filter.tags="@Id=1.1" # all users functional scenarios  - 3 tests will be executed
 ```

@@ -1,11 +1,11 @@
-package com.github.gist;
+package com.github.gists;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
 import io.restassured.response.Response;
 import net.thucydides.core.annotations.Step;
 
-public class GithubGistQuestion {
+public class GithubGistsQuestions {
 
     @Step("Get userId from response")
     public String getCommentBody(Response userDetailResp) {

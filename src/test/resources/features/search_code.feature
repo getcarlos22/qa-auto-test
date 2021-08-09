@@ -26,7 +26,7 @@ Feature: Get Search Code endpoint
       | query_param                                             | total_count |
       | user:getcarlos22+language:Java+repo:getcarlos22/RestAPI | 14          |
       | user:getcarlos22+repo:getcarlos22/RestAPI               | 35          |
-      | user:getcarlos22+language:json                          | 5           |
+      | user:getcarlos22+language:json                          | 3           |
 
 
   @NegativeScenario
@@ -36,4 +36,4 @@ Feature: Get Search Code endpoint
   Using [GET endpoint](https://api.github.com/search/code?q={searchQueryParam}).
 
     When Kingsley requests search code repositories endpoint for user:getcarlos22+language:Java
-    Then he should get the response body property total_count with the value 43
+    Then he should get the response body property total_count with the value 27
