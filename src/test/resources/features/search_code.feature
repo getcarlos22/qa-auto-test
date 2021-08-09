@@ -1,3 +1,4 @@
+@Id=2.1
 Feature: Get Search Code endpoint
   As an user
   I should be able to search code repositories to get specific code files information
@@ -10,29 +11,29 @@ Feature: Get Search Code endpoint
 
   This queryParam should not be url encoded: For more technical details refer to : [com.github.commontasks.CommonRequestSpecification.java#line57]
 
-  @search-code-checks @functional-checks
+  @search @End2End
   Rule: Search-Code-Repositories
 
-  @smoke-checks @happy-path-checks @search-code-happy-path-checks
+  @smokeTest
   Scenario Outline: Search Code Repositories for various repos
 
   Search Code repo requests can be evaluated using the [GET endpoint](https://api.github.com/search/code?q={searchQueryParam}).
 
-    When Una requests search code repositories endpoint for <query_param>
+    When Ama requests search code repositories endpoint for <query_param>
     Then she should get the response body property total_count with the value <total_count>
 
     Examples:
-      | query_param                                                                     | total_count |
-      | user:vamsidarbhamulla+language:Java+repo:vamsidarbhamulla/testng-gradle-example | 8           |
-      | user:vamsidarbhamulla+repo:vamsidarbhamulla/serenity-bdd-maven-junit-example    | 15          |
-      | user:vamsidarbhamulla+language:json                                             | 2           |
+      | query_param                                             | total_count |
+      | user:getcarlos22+language:Java+repo:getcarlos22/RestAPI | 14          |
+      | user:getcarlos22+repo:getcarlos22/RestAPI               | 35          |
+      | user:getcarlos22+language:json                          | 3           |
 
 
-  @negative-checks @search-code-empty-response-checks
+  @NegativeScenario
   Scenario: Search Code Repositories for empty response
 
   Search Code repo requests for a user with files with not available programming language (eg: rust)
   Using [GET endpoint](https://api.github.com/search/code?q={searchQueryParam}).
 
-    When Eran requests search code repositories endpoint for user:vamsidarbhamulla+language:rust
-    Then he should get the response body property total_count with the value 0
+    When Kingsley requests search code repositories endpoint for user:getcarlos22+language:Java
+    Then he should get the response body property total_count with the value 27

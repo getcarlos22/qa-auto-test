@@ -6,7 +6,7 @@
     <artifactId>serenity-cucumber4-apitests</artifactId>
     <version>1.0.0-SNAPSHOT</version>
     <packaging>jar</packaging>
-    <name>Github API Tests</name>
+    <name>LeasePlan Github API Tests</name>
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
@@ -149,6 +149,11 @@
             <groupId>com.github.fge</groupId>
             <artifactId>json-schema-validator</artifactId>
             <version>2.2.6</version>
+        </dependency>
+        <dependency>
+            <groupId>com.github.invictum</groupId>
+            <artifactId>serenity-allure-integration</artifactId>
+            <version>1.0.0</version>
         </dependency>
         <!-- property encryption / decryption -->
         <dependency>

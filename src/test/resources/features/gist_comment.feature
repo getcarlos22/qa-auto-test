@@ -1,3 +1,4 @@
+@Id=3.1
 Feature: Post Gist Comment endpoint
   As an user
   I should be able to post a comment to existing comment
@@ -7,7 +8,7 @@ Feature: Post Gist Comment endpoint
   provided as "authToken" property name.
   Please check serenity.conf under test resources for more details.
 
-  @gist-comment-checks @functional-checks
+  @gist-comment-checks @End2End
   Rule: Gist Comment
 
   @schema-checks @gist-comment-schema-check
@@ -31,8 +32,8 @@ Feature: Post Gist Comment endpoint
     Then he should get the response body property body contains <message>
 
     Examples:
-      | gist-id                          | message                                                    |
-      | 1656310e48afa42b6c7f05b068796547 | commenting from serenity-cucumber-rest-assured-api-request |
+      | gist-id                          | message                     |
+      | 1656310e48afa42b6c7f05b068796547 | commenting from the Library |
 
   @negative-checks @gist-comment-negative-checks
   Scenario: Github gist comment 401 authorization error validation
@@ -40,8 +41,8 @@ Feature: Post Gist Comment endpoint
   Github gist comments POST requests error response should be returned when user not provided authentication token
   [POST endpoint](https://api.github.com/gists/{gistid}/comment).
 
-    Given Eran do not have an authentication token
-    When Eran requests github user endpoint
+    Given Kingsley do not have an authentication token
+    When Kingsley requests github user endpoint
     Then he should receive an error status 401 unauthorized
     And he receives an error json with message Requires authentication
 
@@ -58,5 +59,5 @@ Feature: Post Gist Comment endpoint
     And he receives an error json with message Not Found
 
     Examples:
-      | gist-id | message                                                    |
-      | 1656310 | commenting from serenity-cucumber-rest-assured-api-request |
+      | gist-id | message                |
+      | 1656310 | commenting from school |

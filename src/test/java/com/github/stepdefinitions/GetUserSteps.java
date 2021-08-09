@@ -42,8 +42,8 @@ public class GetUserSteps {
     githubUserQuestions.validateUserName(userName, lastResponse());
   }
 
-  @Given("Eran do not have an authentication token")
-  public void eran_do_not_have_an_authentication_token() {
+  @Given("Kingsley do not have an authentication token")
+  public void Kingsley_do_not_have_an_authentication_token() {
     requestSpecification = CommonRequestSpec.githubReqSpec();
   }
 
