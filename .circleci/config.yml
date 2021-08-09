@@ -22,7 +22,7 @@ jobs:
             - ~/.m2
           key: qa-test-leaseplan-{{ checksum "pom.xml" }}
 
-      - run: mvn clean verify
+      - run: mvn clean verify -Denvironment=dev
 
       - store_test_results:
           path: target/failsafe-reports
