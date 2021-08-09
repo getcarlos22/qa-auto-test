@@ -5,7 +5,7 @@ jobs:
     working_directory: ~/qa-test-leaseplan
 
     docker:
-      - image: circleci/openjdk:8-jdk-stretch
+      - image: circleci/openjdk:11-jdk-stretch
 
     steps:
 
@@ -21,7 +21,7 @@ jobs:
           paths:
             - ~/.m2
           key: qa-test-leaseplan-{{ checksum "pom.xml" }}
-
+      #run dev
       - run: mvn clean verify -Denvironment=dev
 
       - store_test_results:

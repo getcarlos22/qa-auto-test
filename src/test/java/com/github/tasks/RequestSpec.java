@@ -1,18 +1,14 @@
-package com.github.commontasks;
+package com.github.tasks;
 
-import com.github.commonutilities.TestEnv;
+import com.github.utils.TestEnv;
 import io.restassured.builder.RequestSpecBuilder;
 import io.restassured.filter.log.ErrorLoggingFilter;
 import io.restassured.filter.log.RequestLoggingFilter;
 import io.restassured.filter.log.ResponseLoggingFilter;
 import io.restassured.specification.RequestSpecification;
 
-public class CommonRequestSpec {
-  /**
-   * Get Request Specification for github api endpoints
-   *
-   * @return RequestSpecification
-   */
+public class RequestSpec {
+
 
   public static RequestSpecification githubReqSpec() {
     return githubReqSpecBuilder().build();

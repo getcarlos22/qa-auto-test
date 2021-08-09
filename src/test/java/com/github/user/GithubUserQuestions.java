@@ -1,8 +1,9 @@
-package com.github.users;
+package com.github.user;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
 import io.restassured.response.Response;
+//import io.cucumber.junit;
 import net.thucydides.core.annotations.Step;
 
 public class GithubUserQuestions {

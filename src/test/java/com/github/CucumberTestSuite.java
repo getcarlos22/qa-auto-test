@@ -8,9 +8,8 @@ import org.junit.runner.RunWith;
 @CucumberOptions(
     plugin = {"pretty"},
     features = "src/test/resources/features",
-    glue = "com.github.stepdefinitions"
-    // Uncomment the below line to run a single scenario while building or debugging in IDE (Eg: Intellij)
-    // ,tags = "@functional-checks"
+    glue = "com.github.stepdefinition"
+
 )
 public class CucumberTestSuite {
 

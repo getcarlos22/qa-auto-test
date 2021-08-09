@@ -1,4 +1,4 @@
-package com.github.commonutilities;
+package com.github.utils;
 
 import org.apache.commons.lang3.StringUtils;
 import org.jasypt.encryption.pbe.StandardPBEStringEncryptor;
@@ -10,8 +10,9 @@ class PropertyDecrypter {
     PropertyDecrypter(String passwordDecrypter) {
         this.decrypter = new StandardPBEStringEncryptor();
         String password = StringUtils.isBlank(passwordDecrypter)
-            // properties are expected to encrypt with default password
+
             // if no password provided in configuration or properties
+                // properties are expected to encrypt with default password
             ? Decrypt.PASSWORD.getValue()
             : passwordDecrypter;
         this.decrypter.setPassword(password);

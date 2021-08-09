@@ -1,6 +1,6 @@
-package com.github.gists;
+package com.github.gist;
 
-import com.github.commontasks.CommonRequestSpec;
+import com.github.tasks.RequestSpec;
 import io.restassured.response.Response;
 import io.restassured.specification.RequestSpecification;
 import java.util.Map;
@@ -9,9 +9,9 @@ import java.util.function.Function;
 import net.serenitybdd.rest.SerenityRest;
 import net.thucydides.core.annotations.Step;
 
-public class GithubGistsActions {
+public class GithubGistAction {
 
-    private static final String GISTS_ENDPOINT = "/gists";
+    private static final String GISTS_ENDPOINT = "/gist";
     private static final Function<String, String> COMMENTS_ENDPOINT =
         (gistId) ->  "/" + gistId + "/comments";
 
@@ -22,7 +22,7 @@ public class GithubGistsActions {
 
     @Step("Post comment message {0} for gist {1}")
     public Response postCommentsForGist(String comment, String gistId) {
-        return gistResponse(comment, gistId, CommonRequestSpec.githubAuthReqSpec());
+        return gistResponse(comment, gistId, RequestSpec.githubAuthReqSpec());
     }
 
     private Response gistResponse(String comment, String gistId, RequestSpecification authSpec) {

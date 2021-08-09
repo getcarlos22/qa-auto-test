@@ -1,6 +1,6 @@
-package com.github.commonutilities;
+package com.github.utils;
 
-import static com.github.commonutilities.functional.Memoize.memoizeSupplier;
+import static com.github.utils.function.Memoize.memoizeSuppliers;
 
 import java.util.function.Supplier;
 import net.serenitybdd.core.environment.EnvironmentSpecificConfiguration;
@@ -10,8 +10,8 @@ import org.apache.commons.lang3.StringUtils;
 
 public class TestEnv {
 
-    private static final Supplier<EnvironmentVariables> VARS = memoizeSupplier(TestEnv::allVars);
-    private static final Supplier<PropertyDecrypter> DECRYPTER = memoizeSupplier(TestEnv::encryptor);
+    private static final Supplier<EnvironmentVariables> VARS = memoizeSuppliers(TestEnv::allVars);
+    private static final Supplier<PropertyDecrypter> DECRYPTER = memoizeSuppliers(TestEnv::encryptor);
 
     public static String getProp(String prop) {
         EnvironmentSpecificConfiguration config = EnvironmentSpecificConfiguration.from(VARS.get());

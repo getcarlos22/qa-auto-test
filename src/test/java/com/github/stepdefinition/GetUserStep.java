@@ -1,11 +1,11 @@
-package com.github.stepdefinitions;
+package com.github.stepdefinition;
 
 import static net.serenitybdd.rest.SerenityRest.lastResponse;
 
-import com.github.commontasks.CommonQuestions;
-import com.github.commontasks.CommonRequestSpec;
-import com.github.users.GithubUserActions;
-import com.github.users.GithubUserQuestions;
+import com.github.tasks.Question;
+import com.github.tasks.RequestSpec;
+import com.github.user.GithubUserActions;
+import com.github.user.GithubUserQuestions;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
@@ -13,7 +13,7 @@ import io.restassured.specification.RequestSpecification;
 import net.thucydides.core.annotations.Steps;
 
 
-public class GetUserSteps {
+public class GetUserStep {
 
   private RequestSpecification requestSpecification;
 
@@ -21,7 +21,7 @@ public class GetUserSteps {
   GithubUserActions githubUserActions;
 
   @Steps
-  CommonQuestions commonQuestions;
+  Question question;
 
   @Steps
   GithubUserQuestions githubUserQuestions;
@@ -31,9 +31,10 @@ public class GetUserSteps {
     githubUserActions.getUserDetails(actor);
   }
 
+
   @Then("(s)he should get the response body property id to {int}")
   public void user_details_should_be_retrieved(int id) {
-    commonQuestions.responseCodeIs(200, lastResponse());
+    question.responseCodeIs(200, lastResponse());
     githubUserQuestions.validateId(id, lastResponse());
   }
 
@@ -44,7 +45,7 @@ public class GetUserSteps {
 
   @Given("Kingsley do not have an authentication token")
   public void Kingsley_do_not_have_an_authentication_token() {
-    requestSpecification = CommonRequestSpec.githubReqSpec();
+    requestSpecification = RequestSpec.githubReqSpec();
   }
 
   @When("{} requests github user endpoint")
