@@ -1,4 +1,4 @@
-# qa-test-leaseplan
+# qa-test
 [![CircleCI](https://circleci.com/gh/getcarlos22/qa-auto-test-leaseplan.svg?style=svg)](https://circleci.com/gh/getcarlos22/qa-auto-test-leaseplan)
 
 ## Introduction
